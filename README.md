@@ -4,5 +4,5 @@
 
 # Dependencies
 
-  discord.py (use pip install discord.py)
-  dotenv.py (use pip install python-dotenv)
+  discord.py (use `pip install discord.py`)
+  dotenv.py (use `pip install python-dotenv`)

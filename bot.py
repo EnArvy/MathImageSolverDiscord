@@ -1,19 +1,21 @@
 import os
-import discord
+from discord.ext import commands
+
 from dotenv import load_dotenv
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
-client = discord.Client()
+bot = commands.Bot(command_prefix="'")
 
-@client.event
+@bot.event
 async def on_ready():
-    print(f'{client.user} has connected to Discord!')
+    print(f'{bot.user} has connected to Discord!')
 
-@client.event
-async def on_message(message):
-    if '!mis' in message.content.lower():
-        await message.channel.send('Sup bitch')
+@bot.command(name='mis',help='help dialogue')
+async def getproblem(ctx):
+    await ctx.send('hello')
 
-client.run(TOKEN)
+
+
+bot.run(TOKEN)
