@@ -24,7 +24,7 @@ async def getproblem(ctx,qimageurl=""):
     
 
     response = getlatex(qimageurl).json()
-    latex = response['latex_styled']
+    latex = response['latex']
     await ctx.send(latex)
 
 
