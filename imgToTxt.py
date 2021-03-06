@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import json
 import shutil
 
@@ -126,3 +127,23 @@ print("Extracted Text:" + str(jobj["OCRText"][0][0]))
 #file_response = requests.get(jobj["OutputFileUrl"], stream=True)
 #with open("outputDoc.doc", 'wb') as output_file:
 #   shutil.copyfileobj(file_response.raw, output_file)
+=======
+
+mathpixurl = 'https://api.mathpix.com/v3/latex' 
+
+query = '''{
+    "src": qimageurl,
+    "format": "data",
+    "data_options":{
+        "include_latex": true
+    }'''
+response = requests.post(
+            mathpixurl,
+            data=json.dumps(query),
+            headers={
+                "app_id": os.getenv('APP_ID'),
+                "app_key": os.getenv('APP_KEY'),
+                "Content-Type": "application/json"
+            }
+        )
+>>>>>>> 34ee76d62dc677b89b5b25b5d641a7f3b1ddc5ba
