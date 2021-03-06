@@ -3,8 +3,8 @@ from discord.ext import commands
 import requests
 import json
 from dotenv import load_dotenv
-import imgToTxt
-from imgToTxt import response
+from imgToTxt import getlatex
+
 
 
 load_dotenv()
@@ -22,15 +22,11 @@ async def getproblem(ctx,qimageurl=""):
     if qimageurl == "" and ctx.message.attachments:
         qimageurl = ctx.message.attachments[0].url
     await ctx.send(qimageurl)
-    query = '''{
-    "src": qimageurl,
-    "format": "data",
-    "data_options":{
-        "include_latex": true
-    }'''
+
+    response = getlatex(qimageurl)
     print(response)
-    latex = json.dumps(json.loads(response.data))   
-    print(latex)
+    #latex = json.dumps(json.loads(response.data))   
+    #print(latex)
 
 
 bot.run(TOKEN)
