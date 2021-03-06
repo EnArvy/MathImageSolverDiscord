@@ -4,6 +4,7 @@ import requests
 import json
 from dotenv import load_dotenv
 from imgToTxt import getlatex
+from txtToSolutionImage import getsolution
 
 
 
@@ -25,7 +26,8 @@ async def getproblem(ctx,qimageurl=""):
 
     response = getlatex(qimageurl).json()
     latex = response['latex']
-    await ctx.send(latex)
+    answer = getsolution(latex)
+    await ctx.send(answer)
 
 
 bot.run(TOKEN)
