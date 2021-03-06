@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import json
 import shutil
 
@@ -146,4 +145,3 @@ response = requests.post(
                 "Content-Type": "application/json"
             }
         )
->>>>>>> 34ee76d62dc677b89b5b25b5d641a7f3b1ddc5ba
