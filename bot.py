@@ -18,12 +18,12 @@ async def on_ready():
 
 @bot.command(name='mis',help='Send image file via url or upload via discord')
 async def getproblem(ctx,qimageurl=""):
-    await ctx.send('hello')
+    
     if qimageurl == "" and ctx.message.attachments:
         qimageurl = ctx.message.attachments[0].url
     
 
-   response = getlatex(qimageurl).json()
+    response = getlatex(qimageurl).json()
     latex = response['latex_styled']
     await ctx.send(latex)
 
