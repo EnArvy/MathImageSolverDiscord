@@ -21,10 +21,10 @@ async def getproblem(ctx,qimageurl=""):
     await ctx.send('hello')
     if qimageurl == "" and ctx.message.attachments:
         qimageurl = ctx.message.attachments[0].url
-    await ctx.send(qimageurl)
+    
 
     response = getlatex(qimageurl)
-    print(response)
+    await ctx.send(response.json())
     #latex = json.dumps(json.loads(response.data))   
     #print(latex)
 
