@@ -23,10 +23,9 @@ async def getproblem(ctx,qimageurl=""):
         qimageurl = ctx.message.attachments[0].url
     
 
-    response = getlatex(qimageurl)
-    await ctx.send(response.json())
-    #latex = json.dumps(json.loads(response.data))   
-    #print(latex)
+   response = getlatex(qimageurl).json()
+    latex = response['latex_styled']
+    await ctx.send(latex)
 
 
 bot.run(TOKEN)
