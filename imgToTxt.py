@@ -1,14 +1,18 @@
-import requests
 
+mathpixurl = 'https://api.mathpix.com/v3/latex' 
 
-
-response= requests.get("https://docs.mathpix.com/",json={
-    "src": "https://mathpix.com/examples/limit.jpg",
-    "formats": ["text", "data", "html"],
-    "data_options": {
-        "include_asciimath": True,
-        "include_latex": True}}
-    , headers= {
-    "content-type": "application/json",
-    "app_id": "YOUR_APP_ID",
-    "app_key": "YOUR_APP_KEY"})
+query = '''{
+    "src": qimageurl,
+    "format": "data",
+    "data_options":{
+        "include_latex": true
+    }'''
+response = requests.post(
+            mathpixurl,
+            data=json.dumps(query),
+            headers={
+                "app_id": os.getenv('APP_ID'),
+                "app_key": os.getenv('APP_KEY'),
+                "Content-Type": "application/json"
+            }
+        )
