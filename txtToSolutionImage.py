@@ -1,12 +1,17 @@
-import wolframalpha
+import requests
+import urllib.parse
 import os
 from dotenv import load_dotenv
 
 load_dotenv()
+baseurl = "http://api.wolframalpha.com/v1/simple"
 WOLFRAMID = os.getenv('WOLFAPPID')
-client = wolframalpha.Client(WOLFRAMID)
+urlappid = baseurl+"?appid="+WOLFRAMID
+
 
 def getsolution(latex):
-    res = client.query(latex)
-    answer = next(res.results).text 
-    return(answer)
+    finalurl = urlappid+"&input="+'"'+latex+'"'
+
+
+    return finalurl 
+    
