@@ -1,6 +1,7 @@
 # MathImageSolverDiscord
 
   Get solution of math problems by uploading image in discord  
+  imgToTxt - takes image url as input and returns the text from the image usinf OCR API
 
 # Dependencies
 
