@@ -40,7 +40,7 @@ async def getproblem(ctx,qimageurl=""):
         qimageurl = ctx.message.attachments[0].url
     #cheks if url is valid
     valid=validators.url(qimageurl)
-    if valid == False:
+    if valid != True:
         await ctx.send("Enter Valid URL")
     else:
         latex = getlatex(qimageurl)  #calling ocr api and getting result in latex format
