@@ -14,7 +14,9 @@
   
 # How It Works
 
- This bot is made in python. First, it gets the image url of the problem in input.
+ This bot is made in python.
+
+ First, it gets the image url of the problem in input.
  
  Then it passes the url to mathpix api which is an ocr service and gets back the ocr results in the LaTeX format.
  
