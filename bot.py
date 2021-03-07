@@ -12,7 +12,17 @@ import validators
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')  
 
-bot = commands.Bot(command_prefix="'")
+bot = commands.Bot(command_prefix=")",help_command=None)
+
+#better help
+@bot.command(name='help')
+async def help(ctx):
+    await ctx.send("""  Welcome to the MathImageSolver Bot!
+    
+    Use this bot to get solution of math problems via image!
+      
+    Use )help to show this help dislogue
+    Use )mis <imageurl> OR 'mis with image file attached to get solution as an image!"""  )
 
 #Marks succesful connection
 @bot.event
@@ -20,7 +30,7 @@ async def on_ready():
     print(f'{bot.user} has connected to Discord!')
 
 #command to get solution upon input of picture/url with math problem
-@bot.command(name='mis',help='Send image file via url or upload via discord')
+@bot.command(name='mis')
 async def getproblem(ctx,qimageurl=""):
     
     #checks if url sent otherwise gets attachment image url
