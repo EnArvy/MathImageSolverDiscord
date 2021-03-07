@@ -28,6 +28,8 @@ async def help(ctx):
 @bot.event
 async def on_ready():
     print(f'{bot.user} has connected to Discord!')
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening,name=')help'))
+
 
 #command to get solution upon input of picture/url with math problem
 @bot.command(name='mis')
