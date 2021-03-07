@@ -8,7 +8,7 @@ import json
 from dotenv import load_dotenv
 from imgToTxt import getlatex
 from txtToSolutionImage import getsolution
-
+import validators
 
 
 load_dotenv()
@@ -26,6 +26,10 @@ async def getproblem(ctx,qimageurl=""):
     if qimageurl == "" and ctx.message.attachments:
         qimageurl = ctx.message.attachments[0].url
     
+    valid=validators.url(qimageurl)
+    if valid == False:
+        print("Enter Valid URL")
+        return None
 
     response = getlatex(qimageurl).json()
     latex = response['latex']
