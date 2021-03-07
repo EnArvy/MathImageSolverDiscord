@@ -1,4 +1,7 @@
 import os
+import io
+import aiohttp
+import discord
 from discord.ext import commands
 import requests
 import json
@@ -27,7 +30,10 @@ async def getproblem(ctx,qimageurl=""):
     response = getlatex(qimageurl).json()
     latex = response['latex']
     solution = getsolution(latex)
-    await ctx.send(solution)
+    async with aiohttp.ClientSession() as session:
+        async with session.get(solution) as resp:
+            data = io.BytesIO(await resp.read())
+            await ctx.send(file=discord.File(data, 'Solution.png'))
 
 
 bot.run(TOKEN)

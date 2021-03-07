@@ -1,5 +1,6 @@
 import requests
 import urllib.parse
+from PIL import Image
 import os
 from dotenv import load_dotenv
 
@@ -10,8 +11,7 @@ urlappid = baseurl+"?appid="+WOLFRAMID
 
 
 def getsolution(latex):
-    finalurl = urlappid+"&input="+'"'+latex+'"'
-
+    finalurl = urlappid+"&input="+urllib.parse.quote(latex)
 
     return finalurl 
     
