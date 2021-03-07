@@ -11,9 +11,9 @@ APPKEY = os.getenv('APP_KEY')
 mathpixurl = 'https://api.mathpix.com/v3/latex'  
 def getlatex(qimageurl) :
     response = requests.post(mathpixurl,  #calls api and gets json data
-               data=json.dumps({"src": qimageurl,"format":"latex_styled"}),
+               data=json.dumps({"src": qimageurl,"formats":["wolfram"]}),
 
                headers ={"app_id":APPID,"app_key":APPKEY,"Content-Type": "application/json"})
     data = response.json()
-    latex = data['latex']         
+    latex = data['wolfram']         
     return latex    

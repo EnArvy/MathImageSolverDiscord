@@ -10,6 +10,8 @@ baseurl = "http://api.wolframalpha.com/v1/simple"
 urlappid = baseurl+"?appid="+WOLFRAMID
 
 def getsolution(latex):
+    print(latex)
     finalurl = urlappid+"&input="+urllib.parse.quote(latex)
+    print(finalurl)
     return finalurl 
     
