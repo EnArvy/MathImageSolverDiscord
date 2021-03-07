@@ -39,15 +39,14 @@ async def getproblem(ctx,qimageurl=""):
     #cheks if url is valid
     valid=validators.url(qimageurl)
     if valid == False:
-        print("Enter Valid URL")
-        return None
-
-    latex = getlatex(qimageurl)  #calling ocr api and getting result in latex format
-    solution = getsolution(latex) #get the url of api result
-    #get image from url and send to discord
-    async with aiohttp.ClientSession() as session:
-        async with session.get(solution) as resp:
-            data = io.BytesIO(await resp.read())
-    await ctx.send(file=discord.File(data, 'Solution.png'))
+        await ctx.send("Enter Valid URL")
+    else:
+        latex = getlatex(qimageurl)  #calling ocr api and getting result in latex format
+        solution = getsolution(latex) #get the url of api result
+        #get image from url and send to discord
+        async with aiohttp.ClientSession() as session:
+            async with session.get(solution) as resp:
+                data = io.BytesIO(await resp.read())
+        await ctx.send(file=discord.File(data, 'Solution.png'))
 
 bot.run(TOKEN)
