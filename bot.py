@@ -39,5 +39,9 @@ async def getproblem(ctx,qimageurl=""):
             data = io.BytesIO(await resp.read())
             await ctx.send(file=discord.File(data, 'Solution.png'))
 
+@getproblem.error
+async def info_error(ctx, error):
+    if isinstance(error, commands.CommandInvokeError):
+        await ctx.send('Math problem not found in image')
 
 bot.run(TOKEN)
