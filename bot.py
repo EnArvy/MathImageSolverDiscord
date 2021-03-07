@@ -37,7 +37,7 @@ async def getproblem(ctx,qimageurl=""):
     #checks if url sent otherwise gets attachment image url
     if qimageurl == "" and ctx.message.attachments:
         qimageurl = ctx.message.attachments[0].url
-    #cheks if url is valid
+    #checks if url is valid
     valid=validators.url(qimageurl)
     if valid != True:
         await ctx.send("Enter Valid URL")

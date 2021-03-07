@@ -10,7 +10,7 @@
   
   OR
   
-  Use `Go solve` and upload problem image in the same image.
+  Use `Go solve` and upload problem image in the same message.
   
 # How It Works
 
