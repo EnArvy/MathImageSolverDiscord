@@ -3,45 +3,41 @@ import io
 import aiohttp
 import discord
 from discord.ext import commands
-import requests
-import json
 from dotenv import load_dotenv
 from imgToTxt import getlatex
 from txtToSolutionImage import getsolution
 import validators
 
-
+#Gets token from .env
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')  
 
 bot = commands.Bot(command_prefix="'")
 
+#Marks succesful connection
 @bot.event
 async def on_ready():
     print(f'{bot.user} has connected to Discord!')
 
+#command to get solution upon input of picture/url with math problem
 @bot.command(name='mis',help='Send image file via url or upload via discord')
 async def getproblem(ctx,qimageurl=""):
     
+    #checks if url sent otherwise gets attachment image url
     if qimageurl == "" and ctx.message.attachments:
         qimageurl = ctx.message.attachments[0].url
-    
+    #cheks if url is valid
     valid=validators.url(qimageurl)
     if valid == False:
         print("Enter Valid URL")
         return None
 
-    response = getlatex(qimageurl).json()
-    latex = response['latex']
-    solution = getsolution(latex)
+    latex = getlatex(qimageurl)  #calling ocr api and getting result in latex format
+    solution = getsolution(latex) #get the url of api result
+    #get image from url and send to discord
     async with aiohttp.ClientSession() as session:
         async with session.get(solution) as resp:
             data = io.BytesIO(await resp.read())
-            await ctx.send(file=discord.File(data, 'Solution.png'))
-
-@getproblem.error
-async def info_error(ctx, error):
-    if isinstance(error, commands.CommandInvokeError):
-        await ctx.send('Math problem not found in image')
+    await ctx.send(file=discord.File(data, 'Solution.png'))
 
 bot.run(TOKEN)
