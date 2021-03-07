@@ -21,8 +21,8 @@ async def help(ctx):
     
     Use this bot to get solution of math problems via image!
       
-    Use )help to show this help dislogue
-    Use )mis <imageurl> OR 'mis with image file attached to get solution as an image!"""  )
+    Use `Go help` to show this help dislogue
+    Use `Go solve <imageurl>` OR `Go solve` with image file attached to get solution as an image!"""  )
 
 #Marks succesful connection
 @bot.event
