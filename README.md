@@ -4,13 +4,13 @@
   
 # Usage  
   
-  After getting the bot on the server, use `)help` to access the help dialogue. 
+  After getting the bot on the server, use `Go help` to access the help dialogue. 
   
-  Use `)solve <imageurl>` to get solution of problem given via image at the given url.
+  Use `Go solve <imageurl>` to get solution of problem given via image at the given url.
   
   OR
   
-  Use `)solve` and upload problem image in the same image.
+  Use `Go solve` and upload problem image in the same image.
   
 # How It Works
 
