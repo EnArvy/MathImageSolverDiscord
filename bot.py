@@ -12,7 +12,7 @@ import validators
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')  
 
-bot = commands.Bot(command_prefix=")",help_command=None)
+bot = commands.Bot(command_prefix="Go ",help_command=None)
 
 #better help
 @bot.command(name='help')
@@ -28,11 +28,10 @@ async def help(ctx):
 @bot.event
 async def on_ready():
     print(f'{bot.user} has connected to Discord!')
-    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening,name=')help'))
-
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening,name='Go help'))
 
 #command to get solution upon input of picture/url with math problem
-@bot.command(name='mis')
+@bot.command(name='solve')
 async def getproblem(ctx,qimageurl=""):
     
     #checks if url sent otherwise gets attachment image url
