@@ -1,0 +1,8 @@
+# This file lists all the requirements needed to run this repository.
+#
+# Run the command below to install the requirements.
+# pip3 install -r requirements.txt
+#
+discord.py==1.6.0        # https://discordpy.readthedocs.io/
+python-dotenv==0.15.0    # https://github.com/theskumar/python-dotenv/
+validators==0.18.2       # https://validators.readthedocs.io/en/latest/
